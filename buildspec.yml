@@ -10,8 +10,9 @@ phases:
   build:
     commands:
       - java -version
-      - mvn clean install
+      - mvn clean package
 artifacts:
   files:
-    - target/*.jar
+    - unicorn-web-project.war   # WAR file jo target folder me banta hai
+  base-directory: target         # CodeBuild yahan se artifact pick karega
 
