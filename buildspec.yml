@@ -2,12 +2,16 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      java: corretto17
+    commands:
+      - echo "Installing Java 17 manually"
+      - yum install -y java-17-amazon-corretto-devel
+      - export JAVA_HOME=/usr/lib/jvm/java-17-amazon-corretto
+      - export PATH=$JAVA_HOME/bin:$PATH
   build:
     commands:
-      - echo "Building Unicorn Project with Java 17"
+      - java -version
       - mvn clean install
 artifacts:
   files:
     - target/*.jar
+
